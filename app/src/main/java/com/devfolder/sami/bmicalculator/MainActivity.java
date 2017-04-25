@@ -160,21 +160,13 @@ public class MainActivity extends AppCompatActivity {
         }*/
     public void popUpWindow(double bmi) {
         // custom dialog
-        final Dialog dialog = new Dialog(this);
+        final Dialog dialog = new Dialog(this,R.style.MyTheme);
         dialog.setContentView(R.layout.bmi_result);
 
         // set the custom dialog components - text, image and button
         TextView text = (TextView) dialog.findViewById(R.id.customTextView);
         DecimalFormat df = new DecimalFormat("###.##");
         text.setText("Your BMI Score is " + df.format(bmi) + "\n" + Others.getBmiResult(bmi));
-        ImageView image = (ImageView) dialog.findViewById(R.id.ib_close);
-        image.setImageResource(R.mipmap.close);
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new View.OnClickListener() {
